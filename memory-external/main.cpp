@@ -28,7 +28,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		SetLayeredWindowAttributes(hWnd, RGB(255, 255, 255), 0, LWA_COLORKEY);
 
-		std::cout << "[overlay] Window created successfully" << std::endl;
+		std::cout << "[overlay] Pencere başarıyla oluşturuldu" << std::endl;
 		Beep(500, 100);
 		break;
 	}
@@ -76,44 +76,44 @@ void read_thread() {
 int main() {
 	utils.update_console_title();
 
-	std::cout << "[info] Github Repository: https://github.com/IMXNOOBX/cs2-external-esp" << std::endl;
-	std::cout << "[info] Unknowncheats thread: https://www.unknowncheats.me/forum/counter-strike-2-releases/600259-cs2-external-esp.html\n" << std::endl;
+	std::cout << "[bilgi] BEST KELES CHEAT" << std::endl;
+	std::cout << "[bilgi] F4 Box ESP’yi açıp kapatıyor. F5 Takım ESP’sini açıp kapatıyor. F7 Ekstra flagları açıp kapatıyor. F8 Skeleton ESP’yi açıp kapatıyor. F9 Head Tracker’ı açıp kapatıyor." << std::endl;
 
-	std::cout << "[config] Reading configuration." << std::endl;
+	std::cout << "[config] Yapılandırma okunuyor." << std::endl;
 	if (config::read())
-		std::cout << "[updater] Successfully read configuration file\n" << std::endl;
+		std::cout << "[updater] Yapılandırma dosyası başarıyla okundu\n" << std::endl;
 	else
-		std::cout << "[updater] Error reading config file, resetting to the default state\n" << std::endl;
+		std::cout << "[updater] Yapılandırma dosyası okunurken hata oluştu, varsayılan duruma sıfırlanıyor\n" << std::endl;
 
 #ifndef _UC
 	try {
 		updater::check_and_update(config::automatic_update);
 	}
 	catch (std::exception& e) {
-		std::cout << "An exceptio was caught while read " << e.what() << std::endl;
+		std::cout << "[hata] Okunduğu sırada bir istisna yakalandı: " << e.what() << std::endl;
 	}
 #endif
 
-	std::cout << "[updater] Reading offsets from file offsets.json." << std::endl;
+	std::cout << "[updater] offsets dosyasından ofsetleri okuma." << std::endl;
 	if (updater::read())
-		std::cout << "[updater] Successfully read offsets file\n" << std::endl;
+		std::cout << "[updater] Ofset dosyası başarıyla okundu\n" << std::endl;
 	else
-		std::cout << "[updater] Error reading offsets file, resetting to the default state\n" << std::endl;
+		std::cout << "[updater] Ofset dosyası okunurken hata oluştu, varsayılan duruma sıfırlanıyor\n" << std::endl;
 
 	g_game.init();
 
 	if (g_game.buildNumber != updater::build_number) {
-		std::cout << "[cs2] Build number doesnt match, the game has been updated and this esp most likely wont work." << std::endl;
-		std::cout << "[warn] If the esp doesnt work, consider updating offsets manually in the file offsets.json" << std::endl;
-		std::cout << "[cs2] Press any key to continue" << std::endl;
+		std::cout << "[cs2] Build numarası uyuşmuyor, oyun güncellenmiş olabilir ve bu ESP muhtemelen çalışmayacak." << std::endl;
+		std::cout << "[uyarı] Eğer ESP çalışmazsa, offsets.json dosyasındaki ofsetleri manuel olarak güncellemeyi düşünün." << std::endl;
+		std::cout << "[cs2] Devam etmek için bir tuşa basın" << std::endl;
 		std::cin.get();
 	}
 	else {
-		std::cout << "[cs2] Offsets seem to be up to date! have fun!" << std::endl;
+		std::cout << "[cs2] Ofsetler güncel görünüyor! İyi eğlenceler!" << std::endl;
 	}
 
 	std::cout << "[overlay] Waiting to focus game to create the overlay..." << std::endl;
-	std::cout << "[overlay] Make sure your game is in \"Full Screen Windowed\"" << std::endl;
+	std::cout << "[overlay] Oyununuzun \"Pencere Modu (Tam Ekran)\" olduğundan emin olun" << std::endl;
 	while (GetForegroundWindow() != g_game.process->hwnd_) {
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		g_game.process->UpdateHWND();
